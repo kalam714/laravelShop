@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Category;
-use Illuminate\Support\Str;
+use App\Models\SubCategory;
 
-class CategoryController extends Controller
+class SubCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories=Category::latest()->get();
-        return view('admin.category.index',compact('categories'));
+        $subcategories=SubCategory::latest()->get();
+        return view('admin.sub-category.index',compact('subcategories'));
     }
 
     /**
@@ -26,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category.create');
+        return view('admin.sub-category.create');
     }
 
     /**
@@ -38,22 +37,17 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validate=$request->validate([
-            'name'=>'required|unique:categories',
-            'description'=>'required'
+            'name'=>'required',
+            'category'=>'required'
 
         ]);
-        $photo=$request->file('photo')->store('public/category');
-        Category::create([
-
+        SubCategory::create([
             'name'=>$request->name,
-            'slug'=>Str::slug($request->name),
-            'description'=>$request->description,
-            'photo'=>$photo
+            'category_id'=>$request->category
 
         ]);
-        notify()->success('Category Created Successfully!');
-        return redirect('/category');
-
+        notify()->success('Sub Category Created Successfully!');
+        return redirect('/sub-category');
     }
 
     /**
@@ -75,8 +69,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category=Category::find($id);
-        return view('admin.category.edit',compact('category'));
+        $subcategory=SubCategory::find($id);
+        return view('admin.sub-category.edit',compact('subcategory'));
     }
 
     /**
@@ -88,20 +82,18 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-       $category=Category::find($id);
-       $photo=$category->photo;
-       if($request->file('photo')){
-        $photo=$request->file('photo')->store('public/category');
-        \Storage::delete($category->photo);
-       
+        $validate=$request->validate([
+            'name'=>'required',
+            'category'=>'required'
 
-       }
-       $category->name=$request->name;
-       $category->description=$request->description;
-       $category->photo=$photo;
-       $category->update();
-       notify()->success('Category Update Successfully!');
-       return redirect('/category');
+        ]);
+        $subcategory=SubCategory::find($id);
+        $subcategory->name=$request->name;
+        $subcategory->category_id=$request->category;
+        $subcategory->update();
+        notify()->success('Sub Category Updated Successfully!');
+        return redirect('/sub-category');
+
     }
 
     /**
@@ -112,11 +104,10 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-       $category=Category::find($id);
-       $path=$category->photo;
-       $category->delete();
-       \Storage::delete($path);
-       notify()->success('Category Deleted Successfully!');
-       return redirect('/category');
+        $subcategory=SubCategory::find($id);
+        $subcategory->delete();
+        notify()->success('Sub Category Deleted Successfully!');
+        return redirect('/sub-category');
+
     }
 }

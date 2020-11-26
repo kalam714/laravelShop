@@ -25,3 +25,4 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('category','App\Http\Controllers\CategoryController');
+Route::resource('sub-category','App\Http\Controllers\SubCategoryController');
