@@ -15,3 +15,7 @@
 </head>
 
 <body id="page-top">
+  
+  @notifyCss
+  <x:notify-messages />
+  @notifyJs
