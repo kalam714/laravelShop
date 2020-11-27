@@ -46,19 +46,21 @@
       </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm" aria-expanded="true"
-        aria-controls="collapseForm">
-        <i class="fab fa-fw fa-wpforms"></i>
-        <span>Forms</span>
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap11"
+        aria-expanded="true" aria-controls="collapseBootstrap11">
+        <i class="far fa-fw fa-window-maximize"></i>
+        <span>Product</span>
       </a>
-      <div id="collapseForm" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+      <div id="collapseBootstrap11" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Forms</h6>
-          <a class="collapse-item" href="form_basics.html">Form Basics</a>
-          <a class="collapse-item" href="form_advanceds.html">Form Advanceds</a>
+          <a class="collapse-item" href="{{route('product.index')}}">Products</a>
+          <a class="collapse-item" href="{{route('product.create')}}">Create</a>
+        
+         
         </div>
       </div>
     </li>
+  
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
         aria-controls="collapseTable">
