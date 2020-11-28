@@ -23,6 +23,9 @@ Route::get('/admin/index', function () {
 
 Auth::routes();
 Route::get('/','App\Http\Controllers\ClientController@index');
+Route::get('/singleproduct/{id}','App\Http\Controllers\ClientController@singleProduct')->name('singleproduct');
+Route::get('/categoryProduct/{slug}','App\Http\Controllers\ClientController@allProductByCat')->name('category.products');
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('subcategories/{id}','App\Http\Controllers\ProductController@loadsubcategoreis');

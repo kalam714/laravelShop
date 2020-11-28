@@ -15,7 +15,8 @@
       </section>
       <h3>Categories</h3>
       @foreach (App\Models\Category::all() as $category)
-    <button width="100" class="badge badge-primary">{{$category->name}}</button>
+
+   <a href="{{ route('category.products',[$category->slug])}}"> <button width="100" class="btn btn-primary">{{$category->name}}</button></a>
           
       @endforeach
 
@@ -33,7 +34,7 @@
             <p class="card-text">{!!Str::limit($product->description,50)!!}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <a href="{{ route('singleproduct',[$product->id])}}"> <button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
                   <button type="button" class="btn btn-sm btn-outline-secondary">Add To Cart</button>
                 </div>
                 <strong class="text-muted">BDT. {{$product->price}}</strong>
@@ -50,6 +51,7 @@
 
 {{--Carousel--}}
   <div class="jumbotron">
+ 
     <div id="carouselExampleFade" class="carousel slide " data-ride="carousel">
 <div class="carousel-inner">
 
@@ -64,7 +66,7 @@
               <p class="card-text">{!!Str::limit($product->description,50)!!}</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                   <a href="{{ route('singleproduct',[$product->id])}}"> <button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
                     <button type="button" class="btn btn-sm btn-outline-secondary">Add To Cart</button>
                   </div>
                   <strong class="text-muted">BDT. {{$product->price}}</strong>
@@ -87,7 +89,7 @@
               <p class="card-text">{!!Str::limit($product->description,50)!!}</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <a href="{{ route('singleproduct',[$product->id])}}"> <button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
                     <button type="button" class="btn btn-sm btn-outline-secondary">Add To Cart</button>
                   </div>
                   <strong class="text-muted">BDT. {{$product->price}}</strong>
@@ -113,6 +115,7 @@
  <span class="sr-only">Next</span>
 </a>
 </div>
+    
   </div>
 
 </main>
