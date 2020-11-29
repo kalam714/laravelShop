@@ -35,7 +35,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                     <a href="{{ route('singleproduct',[$product->id])}}"> <button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Add To Cart</button>
+                <a href="{{route('addToCart',[$product->id])}}"> <button type="button" class="btn btn-sm btn-outline-secondary">Add To Cart</button></a>
                 </div>
                 <strong class="text-muted">BDT. {{$product->price}}</strong>
               </div>
@@ -67,7 +67,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                    <a href="{{ route('singleproduct',[$product->id])}}"> <button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Add To Cart</button>
+                   <a href="{{route('addToCart',[$product->id])}}"> <button type="button" class="btn btn-sm btn-outline-secondary">Add To Cart</button></a>
                   </div>
                   <strong class="text-muted">BDT. {{$product->price}}</strong>
                 </div>
@@ -90,7 +90,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                     <a href="{{ route('singleproduct',[$product->id])}}"> <button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Add To Cart</button>
+                    <a href="{{route('addToCart',[$product->id])}}"> <button type="button" class="btn btn-sm btn-outline-secondary">Add To Cart</button></a>
                   </div>
                   <strong class="text-muted">BDT. {{$product->price}}</strong>
                 </div>

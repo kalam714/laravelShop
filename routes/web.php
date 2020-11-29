@@ -29,6 +29,7 @@ Route::get('/categoryProduct/{slug}','App\Http\Controllers\ClientController@allP
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('subcategories/{id}','App\Http\Controllers\ProductController@loadsubcategoreis');
+Route::get('/add-to-cart/{product}','App\Http\Controllers\CartController@AddProductToCart')->name('addToCart');
 
 Route::resource('category','App\Http\Controllers\CategoryController');
 Route::resource('sub-category','App\Http\Controllers\SubCategoryController');

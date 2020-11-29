@@ -18,6 +18,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @notifyCss
+    <x:notify-messages />
+    @notifyJs
 </head>
 <body>
     <div id="app">
@@ -38,7 +41,11 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
+                        <a href="#" class="nav-link">
+                            <span class="fas fa-shopping-cart">
+                                ({{session()->has('cart')?session()->get('cart')->totalQty:'0'}})
+                            </span>
+                        </a>
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
