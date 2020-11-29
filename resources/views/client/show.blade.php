@@ -57,7 +57,7 @@
 					<div class="d-flex justify-content-between align-items-center">
 					  <div class="btn-group">
 					   <a href="{{ route('singleproduct',[$product->id])}}"> <button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
-					   <a href="{{route('addToCart',[$product->id])}}"> <button type="button" class="btn btn-sm btn-outline-secondary">Add To Cart</button></a>
+					   <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{{route('addToCart',[$product->id])}}"> Add To Cart</a></button>
 					  </div>
 					  <strong class="text-muted">BDT. {{$product->price}}</strong>
 					</div>

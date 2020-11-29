@@ -41,7 +41,7 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <a href="#" class="nav-link">
+                    <a href="{{route('cart.product')}}" class="nav-link">
                             <span class="fas fa-shopping-cart">
                                 ({{session()->has('cart')?session()->get('cart')->totalQty:'0'}})
                             </span>

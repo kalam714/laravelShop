@@ -29,7 +29,12 @@ Route::get('/categoryProduct/{slug}','App\Http\Controllers\ClientController@allP
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('subcategories/{id}','App\Http\Controllers\ProductController@loadsubcategoreis');
+
 Route::get('/add-to-cart/{product}','App\Http\Controllers\CartController@AddProductToCart')->name('addToCart');
+Route::get('/cart','App\Http\Controllers\CartController@showCartProduct')->name('cart.product');
+Route::post('/qty/update/{product}','App\Http\Controllers\CartController@cartQtyUpdate')->name('qty.update');
+Route::post('/remove-product/{product}','App\Http\Controllers\CartController@removeProductfromCart')->name('remove.product');
+
 
 Route::resource('category','App\Http\Controllers\CategoryController');
 Route::resource('sub-category','App\Http\Controllers\SubCategoryController');
