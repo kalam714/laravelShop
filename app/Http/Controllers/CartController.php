@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Product;
+use Cartalyst\Stripe\Laravel\Facades\Stripe;
 
 class CartController extends Controller
 {
@@ -53,5 +54,30 @@ class CartController extends Controller
         notify()->success('Producted Romoved From Cart!');
         return redirect()->back();
 
+    }
+    public function checkOut($amount){
+        return view('client.checkout',compact('amount'));
+    }
+    public function Charge(Request $request){
+        $charge = Stripe::charges()->create([
+            'currency'=>"USD",
+            'source'=>$request->stripeToken,
+            'amount'=>$request->amount,
+            'description'=>'Test'
+        ]);
+        $chargeId = $charge['id'];
+        if($chargeId){
+            auth()->user()->orders()->create([
+
+                'cart'=>serialize(session()->get('cart'))
+            ]);
+
+            session()->forget('cart');
+            notify()->success('Payment completed!');
+            return redirect()->to('/');
+
+        }else{
+            return redirect()->back();
+        }
     }
 }

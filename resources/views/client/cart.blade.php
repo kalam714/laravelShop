@@ -32,7 +32,7 @@
       @foreach($cart->items as $product)
     <tr>
     <th scope="row">{{$i++}}</th>
-    <td><img src="{{Storage::url($product['photo'])}}" width="100"></td>
+    <td><img src="" width="100"></td>
     
       <td>{{$product['name']}}</td>
       <td>BDT. {{$product['price']}}</td>
@@ -57,7 +57,7 @@
 <div class="card-footer">
 	<button class="btn btn-warning">Continue Shopping</button>
 <span style="margin-left:300px;">Total Price:BDT {{$cart->totalPrice}}</span>
-	<button class="btn btn-info float-right">Checkout</button>
+<a href="{{route('checkout',$cart->totalPrice)}}"><button class="btn btn-info float-right">Checkout</button></a>
 </div>	
 @else
 <h1>No Items In The Cart</h1>

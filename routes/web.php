@@ -34,6 +34,8 @@ Route::get('/add-to-cart/{product}','App\Http\Controllers\CartController@AddProd
 Route::get('/cart','App\Http\Controllers\CartController@showCartProduct')->name('cart.product');
 Route::post('/qty/update/{product}','App\Http\Controllers\CartController@cartQtyUpdate')->name('qty.update');
 Route::post('/remove-product/{product}','App\Http\Controllers\CartController@removeProductfromCart')->name('remove.product');
+Route::get('/check-out/{amount}','App\Http\Controllers\CartController@checkOut')->name('checkout');
+Route::post('/charge','App\Http\Controllers\CartController@Charge')->name('cart.charge');
 
 
 Route::resource('category','App\Http\Controllers\CategoryController');

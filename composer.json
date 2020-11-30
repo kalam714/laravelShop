@@ -8,6 +8,7 @@
     ],
     "license": "MIT",
     "require": {
+        "cartalyst/stripe-laravel": "^13.0",
         "php": "^7.3|^8.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
