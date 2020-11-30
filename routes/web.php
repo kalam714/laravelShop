@@ -36,6 +36,7 @@ Route::post('/qty/update/{product}','App\Http\Controllers\CartController@cartQty
 Route::post('/remove-product/{product}','App\Http\Controllers\CartController@removeProductfromCart')->name('remove.product');
 Route::get('/check-out/{amount}','App\Http\Controllers\CartController@checkOut')->name('checkout');
 Route::post('/charge','App\Http\Controllers\CartController@Charge')->name('cart.charge');
+Route::get('/orders','App\Http\Controllers\CartController@Orders')->name('orders');
 
 
 Route::resource('category','App\Http\Controllers\CategoryController');

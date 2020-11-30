@@ -33,7 +33,42 @@
                       </style>
                     
                      <div class="container">
-                      <div class="col-md-8">
+                       <div class="row">
+                         <div class="col-md-6">
+                          <table id="cart" class="table table-hover ">
+    	
+
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Product</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Qty</th>
+                                
+                              </tr>
+                            </thead>
+                            <tbody>
+                                @if($cart)
+                                @php $i=1 @endphp
+                                @foreach($cart->items as $product)
+                              <tr>
+                              <th scope="row">{{$i++}}</th>
+                              <td><img src="" width="100"></td>
+                              
+                                <td>{{$product['name']}}</td>
+                                <td>BDT. {{$product['price']}}</td>
+                              <td>{{$product['qty']}}</td>
+                               
+                              </tr>
+                            @endforeach
+                            @endif
+                          
+                            </tbody>
+                          </table>	
+                          <strong>Total Price:BDT {{$cart->totalPrice}}</strong>
+                         </div>
+                      <div class="col-md-6">
                         <div class="card">
                           <div class="card-header">Checkout</div>
                           <div class="card-body">
@@ -85,7 +120,7 @@
                     </div>
                     </div>
                     </div>
-
+                     </div>
                     <script src="https://js.stripe.com/v3/"></script>
                     <script type="text/javascript">
                         // Create a Stripe client.

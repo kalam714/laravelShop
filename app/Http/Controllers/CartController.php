@@ -56,7 +56,12 @@ class CartController extends Controller
 
     }
     public function checkOut($amount){
-        return view('client.checkout',compact('amount'));
+        if(session()->has('cart')){
+    		$cart = new Cart(session()->get('cart'));
+    	}else{
+    		$cart =null;
+        }
+        return view('client.checkout',compact('amount','cart'));
     }
     public function Charge(Request $request){
         $charge = Stripe::charges()->create([
@@ -79,5 +84,13 @@ class CartController extends Controller
         }else{
             return redirect()->back();
         }
+    }
+    public function Orders(){
+        $orders = auth()->user()->orders;
+        $carts =$orders->transform(function($cart,$key){
+            return unserialize($cart->cart);
+
+        });
+        return view('client.order',compact('carts'));
     }
 }
