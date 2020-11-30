@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Product;
+use App\Mail\Sendmail;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
+
 
 class CartController extends Controller
 {
@@ -71,6 +73,15 @@ class CartController extends Controller
             'description'=>'Test'
         ]);
         $chargeId = $charge['id'];
+        /* to send mail uncomment this and setup your mail server in env file.
+        if(session()->has('cart')){
+            $cart = new Cart(session()->get('cart'));
+        }else{
+            $cart = null;
+        } 
+       \Mail::to(auth()->user()->email)->send(new Sendmail($cart));
+       */
+
         if($chargeId){
             auth()->user()->orders()->create([
 
