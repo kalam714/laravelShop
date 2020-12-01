@@ -28,6 +28,8 @@ Route::get('/singleproduct/{id}','App\Http\Controllers\ClientController@singlePr
 Route::get('/categoryProduct/{slug}','App\Http\Controllers\ClientController@allProductByCat')->name('category.products');
 
 
+
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('subcategories/{id}','App\Http\Controllers\ProductController@loadsubcategoreis');
 
@@ -43,3 +45,10 @@ Route::get('/orders','App\Http\Controllers\CartController@Orders')->name('orders
 Route::resource('category','App\Http\Controllers\CategoryController');
 Route::resource('sub-category','App\Http\Controllers\SubCategoryController');
 Route::resource('product','App\Http\Controllers\ProductController');
+Route::get('/slider/create','App\Http\Controllers\SliderController@create')->name('slider.create');
+Route::get('/sliders','App\Http\Controllers\SliderController@index')->name('slider.index');
+Route::post('/slider/store','App\Http\Controllers\SliderController@store')->name('slider.store');
+Route::delete('/slider/destroy/{id}','App\Http\Controllers\SliderController@destroy')->name('slider.destroy');
+Route::get('customers','App\Http\Controllers\CustomerController@index')->name('customer');
+Route::get('admin/orders','App\Http\Controllers\OrderController@index')->name('admin.order');
+Route::get('admin/view-order/{userId}/{orderId}','App\Http\Controllers\OrderController@showOrderDetails')->name('admin.order.view');

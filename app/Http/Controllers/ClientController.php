@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\SubCategory;
+use App\Models\Slider;
 
 class ClientController extends Controller
 {
@@ -17,8 +18,9 @@ class ClientController extends Controller
             array_push($randomIds,$product->id);
         }
         $randomItemPro=Product::where('id','!=',$randomIds)->limit(3)->get();
+        $sliders=Slider::all();
 
-        return view('client.index',compact('products','randomActPro','randomItemPro'));
+        return view('client.index',compact('products','randomActPro','randomItemPro','sliders'));
     }
 
     public function singleProduct($id){
