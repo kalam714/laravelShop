@@ -17,9 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
-Route::get('/admin/index', function () {
-    return view('admin.dashboard');
-});
+
 
 Auth::routes();
 Route::get('/','App\Http\Controllers\ClientController@index');
@@ -37,11 +35,16 @@ Route::get('/add-to-cart/{product}','App\Http\Controllers\CartController@AddProd
 Route::get('/cart','App\Http\Controllers\CartController@showCartProduct')->name('cart.product');
 Route::post('/qty/update/{product}','App\Http\Controllers\CartController@cartQtyUpdate')->name('qty.update');
 Route::post('/remove-product/{product}','App\Http\Controllers\CartController@removeProductfromCart')->name('remove.product');
-Route::get('/check-out/{amount}','App\Http\Controllers\CartController@checkOut')->name('checkout');
+Route::get('/check-out/{amount}','App\Http\Controllers\CartController@checkOut')->name('checkout')->middleware('auth');;
 Route::post('/charge','App\Http\Controllers\CartController@Charge')->name('cart.charge');
-Route::get('/orders','App\Http\Controllers\CartController@Orders')->name('orders');
+Route::get('/orders','App\Http\Controllers\CartController@Orders')->name('orders')->middleware('auth');;
 
 
+
+Route::group(['prefix'=>'auth','middleware'=>['auth','admin']],function(){
+    Route::get('/admin/index', function () {
+        return view('admin.dashboard');
+    });
 Route::resource('category','App\Http\Controllers\CategoryController');
 Route::resource('sub-category','App\Http\Controllers\SubCategoryController');
 Route::resource('product','App\Http\Controllers\ProductController');
@@ -52,3 +55,5 @@ Route::delete('/slider/destroy/{id}','App\Http\Controllers\SliderController@dest
 Route::get('customers','App\Http\Controllers\CustomerController@index')->name('customer');
 Route::get('admin/orders','App\Http\Controllers\OrderController@index')->name('admin.order');
 Route::get('admin/view-order/{userId}/{orderId}','App\Http\Controllers\OrderController@showOrderDetails')->name('admin.order.view');
+
+});

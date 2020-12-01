@@ -57,7 +57,9 @@
 <div class="card-footer">
 	<button class="btn btn-warning">Continue Shopping</button>
 <span style="margin-left:300px;">Total Price:BDT {{$cart->totalPrice}}</span>
+@if(Auth::check())
 <a href="{{route('checkout',$cart->totalPrice)}}"><button class="btn btn-info float-right">Checkout</button></a>
+@endif
 </div>	
 @else
 <h1>No Items In The Cart</h1>

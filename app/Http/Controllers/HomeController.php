@@ -24,7 +24,7 @@ class HomeController extends Controller
     public function index()
     {
        if(auth()->user()->is_admin ==1){
-           return redirect()->to('admin/index');
+           return redirect()->to('auth/admin/index');
        }
        return redirect('/');
     }
