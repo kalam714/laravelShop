@@ -23,6 +23,7 @@ Route::get('/admin/index', function () {
 
 Auth::routes();
 Route::get('/','App\Http\Controllers\ClientController@index');
+Route::get('/all-products','App\Http\Controllers\ClientController@allProduct')->name('all.product');
 Route::get('/singleproduct/{id}','App\Http\Controllers\ClientController@singleProduct')->name('singleproduct');
 Route::get('/categoryProduct/{slug}','App\Http\Controllers\ClientController@allProductByCat')->name('category.products');
 

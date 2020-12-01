@@ -47,6 +47,9 @@
      
       </div>
     </div>
+    <center>
+    <a href="{{route('all.product')}}"><button class="btn btn-primary">More Products</button> </a>
+    </center>
   </div>
 
 {{--Carousel--}}

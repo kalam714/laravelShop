@@ -66,6 +66,15 @@ class ClientController extends Controller
         return $product;
 
     }
+    public function allProduct(Request $request){
+        if($request->search){
+            $products=Product::where('name','like','%'.$request->search.'%')->orWhere('description','like','%'.$request->search.'%')
+            ->orWhere('price','like','%'.$request->search.'%')->paginate(10);
+            return view('client.products',compact('products'));
+        }
+        $products=Product::latest()->paginate(10);
+        return view('client.products',compact('products'));
+    }
 
     
 }
