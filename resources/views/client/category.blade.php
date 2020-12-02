@@ -32,7 +32,7 @@
       <div class="col-md-10">
         <div class="row">
    @foreach($products as $product)
-        <div class="col-md-4">
+        <div class="col-lg-4 d-flex align-items-stretch">
           <div class="card mb-4 shadow-sm">
             <img src="{{Storage::url($product->photo)}}" height="200" style="width: 100%">
             <div class="card-body">

@@ -28,7 +28,7 @@ class Cart{
 			'name'=>$product->name,
 			'price'=>$product->price,
 			'qty'=>0,
-			'[photo]'=>$product->photo
+			'photo'=>$product->photo
 
 		];
 		if(!array_key_exists($product->id,$this->items)){

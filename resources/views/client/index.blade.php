@@ -11,7 +11,7 @@
   @foreach($sliders as $key=> $slider)
 
   <div class="carousel-item {{$key == 0 ? 'active' : ''}} ">
-    <img src="{{Storage::url($slider->photo)}}" >
+    <img width="100%" src="{{Storage::url($slider->photo)}}" >
   </div>
   <br>
   @endforeach
@@ -41,9 +41,9 @@
 
       <div class="row">
           @foreach($products as $product)
-        <div class="col-md-4">
+        <div class="col-lg-4 d-flex align-items-stretch">
           <div class="card mb-4 shadow-sm">
-          <img src="{{Storage::url($product->photo)}}" width="335" height="300">
+          <img src="{{Storage::url($product->photo)}}" width="100%" height="300">
             <div class="card-body">
             <strong>{{$product->name}}</strong>
             <p class="card-text">{!!Str::limit($product->description,50)!!}</p>
@@ -76,7 +76,7 @@
  <div class="carousel-item active">
   <div class="row">
     @foreach($randomActPro as $product)
-    <div class="col-4">
+    <div class="col-lg-4 d-flex align-items-stretch">
         <div class="card mb-4 shadow-sm">
             <img src="{{Storage::url($product->photo)}}" width="335" height="300">
               <div class="card-body">
@@ -99,9 +99,9 @@
  <div class="carousel-item">
   <div class="row">
     @foreach($randomItemPro as $product)
-    <div class="col-4">
+    <div class="col-lg-4 d-flex align-items-stretch">
         <div class="card mb-4 shadow-sm">
-            <img src="{{Storage::url($product->photo)}}" width="335" height="300">
+            <img src="{{Storage::url($product->photo)}}" width="100%" height="300">
               <div class="card-body">
               <strong>{{$product->name}}</strong>
               <p class="card-text">{!!Str::limit($product->description,50)!!}</p>
