@@ -17,6 +17,7 @@ class ClientController extends Controller
         foreach($randomActPro as $product){
             array_push($randomIds,$product->id);
         }
+        //dd($randomIds);
         $randomItemPro=Product::where('id','!=',$randomIds)->limit(3)->get();
         $sliders=Slider::all();
 
@@ -80,10 +81,11 @@ class ClientController extends Controller
             array_push($productExIds,$product->id);
         }
        
-        $products=Product::where('id','!=',$productExIds)->paginate(5);
+        $products=Product::where('id','!=',$productExIds)->get();
+     //   dd($products);
       
-      //  $products=Product::latest()->paginate(10);
-        return view('client.products',compact('products'));
+      // $products=Product::latest()->paginate(10);
+       return view('client.products',compact('products'));
     }
 
     

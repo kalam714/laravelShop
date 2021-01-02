@@ -39,7 +39,7 @@
     </div>
     <br>
     <center>
-    {{$products->links()}}
+ 
     </center>
 
 </div>

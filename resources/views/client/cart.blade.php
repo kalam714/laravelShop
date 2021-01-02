@@ -32,7 +32,7 @@
       @foreach($cart->items as $product)
     <tr>
     <th scope="row">{{$i++}}</th>
-    <td><img src="" width="100"></td>
+    <td><img src="{{Storage::url($product['photo'])}}" width="100"></td>
     
       <td>{{$product['name']}}</td>
       <td>BDT. {{$product['price']}}</td>

@@ -30,7 +30,7 @@ class CartController extends Controller
     	}else{
     		$cart =null;
         }
-    
+   // dd($cart);
        
         return view('client.cart',compact('cart'));
     }
@@ -73,7 +73,7 @@ class CartController extends Controller
             'description'=>'Test'
         ]);
         $chargeId = $charge['id'];
-        /* to send mail uncomment this and setup your mail server in env file.
+        /* to send mail uncomment this and setup your mail server in .env file.
         if(session()->has('cart')){
             $cart = new Cart(session()->get('cart'));
         }else{
@@ -102,6 +102,7 @@ class CartController extends Controller
             return unserialize($cart->cart);
 
         });
+        
         return view('client.order',compact('carts'));
     }
 }

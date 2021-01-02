@@ -11,7 +11,7 @@
  				<div class="card-body">
  					@foreach($cart->items as $product)
  					<span class="float-right">
- 						<img src="" width="100">
+ 						<img src="{{Storage::url($product['photo'])}}"  width="100">
  					</span>
 
  					<p>Name:{{$product['name']}}</p>
