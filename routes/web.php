@@ -39,7 +39,7 @@ Route::get('/check-out/{amount}','App\Http\Controllers\CartController@checkOut')
 Route::post('/charge','App\Http\Controllers\CartController@Charge')->name('cart.charge');
 Route::get('/orders','App\Http\Controllers\CartController@Orders')->name('orders')->middleware('auth');;
 
-
+//admin section 
 
 Route::group(['prefix'=>'auth','middleware'=>['auth','admin']],function(){
     Route::get('/admin/index', function () {

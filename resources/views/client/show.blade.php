@@ -44,11 +44,12 @@
 
 	</div> 
 </div> 
+<hr>
 @if(count($sameCatPro)>0)
 <div class="jumbotron">
 	<div class="row">
 		@foreach($sameCatPro as $product)
-		<div class="col-4">
+		<div class="col-lg-4 d-flex align-items-stretch">
 			<div class="card mb-4 shadow-sm">
 				<img src="{{Storage::url($product->photo)}}" width="100%" height="250">
 				  <div class="card-body">

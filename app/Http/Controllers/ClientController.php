@@ -74,9 +74,22 @@ class ClientController extends Controller
             ->orWhere('price','like','%'.$request->search.'%')->paginate(10);
             return view('client.products',compact('products'));
         }
-        $products=Product::latest()->paginate(10);
+        $productsEx=Product::latest()->limit(6)->get();
+        $productExIds=[];
+        foreach($productsEx as $product){
+            array_push($productExIds,$product->id);
+        }
+       
+        $products=Product::where('id','!=',$productExIds)->paginate(5);
+      
+      //  $products=Product::latest()->paginate(10);
         return view('client.products',compact('products'));
     }
 
     
 }
+
+
+
+
+ 
